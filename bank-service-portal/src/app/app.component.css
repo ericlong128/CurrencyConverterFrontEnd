@@ -1,0 +1,44 @@
+.navbar-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    height: 40px;
+    width: 100vw;
+    background-color: rgb(255, 153, 0);
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-logo{
+    background-image: url(/assets/images/BSP_logo2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 28px;
+    width: 100%;
+    margin: 6px;
+    margin-left: 12px;
+}
+
+.navbar-menus{
+    height: 100%;
+    margin: 6px;
+    min-width: 330px;
+}
+
+.navbar-option{
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    background: none;
+    position: relative;
+    color: white;
+    padding: 4px;
+    padding-right: 8px;
+    padding-left: 8px;
+    font-size: 18px;
+}
+
+.navbar-option:hover{
+    text-shadow: 0px 0px 2px;
+}
