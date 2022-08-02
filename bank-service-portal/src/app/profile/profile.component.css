@@ -1,0 +1,12 @@
+#container {
+    margin: 100px;
+    border: black 1px solid;
+    border-radius: 19px;
+    padding: 10px;
+    background-color: rgb(255, 153, 0);
+}
+
+.form {
+    margin: 0 auto;
+
+}

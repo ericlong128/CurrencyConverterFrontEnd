@@ -5,6 +5,7 @@
     <button class="navbar-option" (click)="profile()">About Us</button>
     <button class="navbar-option" (click)="profile()">Careers</button>
     <button class="navbar-option" (click)="profile()">Support</button>
+    <button *ngIf="loggedIn" class="navbar-option" (click)="profile()">Profile</button>
   </div>
 </div>
 

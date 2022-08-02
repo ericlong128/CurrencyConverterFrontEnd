@@ -1,6 +1,44 @@
-<p>profile works!</p>
-<p>profile works!</p>
-<p>profile works!</p>
-<p>profile works!</p>
-<p>profile works!</p>
-<p>profile works!</p>
+<div id="container">
+    <button *ngIf="isEdittingMode==false" (click)="updateEdittingMode(true)">Edit</button>
+    <button *ngIf="isEdittingMode==true" (click)="updateEdittingMode(false)">Cancel</button>
+    <button *ngIf="isEdittingMode==true" (click)="save()">Save</button>
+    <table class="table table-condensed text-black form">
+        <tr>
+            <th>Name:</th>
+            <td>
+                <div *ngIf="!isEdittingMode">
+                    {{customer.name}}
+                </div>
+                <div *ngIf="isEdittingMode">
+                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.name">
+                </div>
+            </td>
+        </tr>
+    
+        <tr>
+            <th>Email Id:</th>
+            <td>
+                <div *ngIf="!isEdittingMode">
+                    {{customer.emailId}}
+                </div>
+                <div *ngIf="isEdittingMode">
+                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.emailId">
+                </div>
+            </td>
+    
+        </tr>
+        <tr>
+            <th>Phone Number:</th>
+            <td>
+                <div *ngIf="!isEdittingMode">
+                    {{customer.phoneNumber}}
+                </div>
+                <div *ngIf="isEdittingMode">
+                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.phoneNumber">
+                </div>
+            </td>
+        </tr>
+    
+    
+    </table>
+</div>

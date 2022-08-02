@@ -8,13 +8,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  
   constructor(private router : Router) { }
 
   ngOnInit(): void {
   }
 
   home(){
-      this.router.navigate(['/home']);
+    this.router.navigate(['/home']);
+    sessionStorage.setItem("loggedIn", String(true));
   }
 }
 
