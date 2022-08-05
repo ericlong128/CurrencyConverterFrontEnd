@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { CurrencyconverterComponent } from './currencyconverter/currencyconverter.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'home', component: HomepageComponent},
+  {path: 'home', component: CurrencyconverterComponent},
   {path: 'profile', component: ProfileComponent},
 ];
 

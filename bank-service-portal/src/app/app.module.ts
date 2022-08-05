@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
+import { CurrencyconverterComponent } from './currencyconverter/currencyconverter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     LoginComponent,
+    CurrencyconverterComponent,
   ],
   imports: [
     CommonModule,

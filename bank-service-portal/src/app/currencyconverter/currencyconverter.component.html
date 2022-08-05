@@ -1,0 +1,68 @@
+<html>
+
+    <div class="container">
+    <h2 class="title">Currency Converter</h2>
+  
+  </div>
+  <div class="ratestitle">
+    <h3 class="header">Current Conversion Rates for 1 USD: </h3>
+  </div>
+  <div class="rates">
+    <h3 class="sub-title">Indian Rupee (INR) {{roundValue(firstRate)}}</h3>
+    <h3 class="sub-title">Euro (EUR) {{roundValue(secondRate)}}</h3>
+    <h3 class="sub-title">Japanese Yen (JPY) {{roundValue(thirdRate)}}</h3>
+    <h3 class="sub-title">Sterling (GBP) {{roundValue(fourthRate)}}</h3>
+    <h3 class="sub-title">Canadian Dollar (CAD) {{roundValue(fifthRate)}}</h3>
+    <h3 class="sub-title">Renminbi (CNY) {{roundValue(sixthRate)}}</h3>
+    <h3 class="sub-title">Australian Dollar(AUD) {{roundValue(seventhRate)}}</h3>
+    <h3 class="sub-title">Russian Ruble (RUB) {{roundValue(eighthRate)}}</h3>
+  </div>
+  
+  
+  <div class="body-container">
+    <div class="input-form">
+      <input
+        placeholder="Enter Amount"
+        name="firstValue"
+        type="text"
+        class="input-field"
+        [(ngModel)]="firstInputValue"
+        (ngModelChange)="firstInput()">
+  
+      <select (change)="selectFirstCurr($event)" class="select">
+        <option selected value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="INR">INR</option>
+        <option value="JPY">JPY</option>
+        <option value="GBP">GBP</option>
+        <option value="CAD">CAD</option>
+        <option value="AUD">AUD</option>
+        <option value="CNY">CNY</option>
+        <option value="RUB">RUB</option>
+      </select>
+    </div>
+  
+    <div class="input-form">
+      <input
+        placeholder="Enter Amount"
+        ame="secondValue"
+        type="text"
+        class="input-field"
+        [(ngModel)]="secondInputValue"
+        (ngModelChange)="secondInput()">
+  
+      <select (change)="selectSecondCurr($event)" class="select">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option selected value="INR">INR</option>
+        <option value="JPY">JPY</option>
+        <option value="GBP">GBP</option>
+        <option value="CAD">CAD</option>
+        <option value="AUD">AUD</option>
+        <option value="CNH">CNH</option>
+        <option value="RUB">RUB</option>
+      </select>
+    </div>
+  </div>
+</html>
+
