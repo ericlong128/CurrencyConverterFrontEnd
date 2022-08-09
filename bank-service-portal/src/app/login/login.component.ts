@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/home']);
     sessionStorage.setItem("loggedIn", String(true));
   }
+
+  
 }
 
 
