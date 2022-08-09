@@ -1,3 +1,6 @@
+<app-sidebar></app-sidebar>
+<html>
+<div class="engulfing-container">
 <div id="container">
     <button *ngIf="isEdittingMode==false" (click)="updateEdittingMode(true)">Edit</button>
     <button *ngIf="isEdittingMode==true" (click)="updateEdittingMode(false)">Cancel</button>
@@ -42,3 +45,5 @@
     
     </table>
 </div>
+</div>
+</html>
