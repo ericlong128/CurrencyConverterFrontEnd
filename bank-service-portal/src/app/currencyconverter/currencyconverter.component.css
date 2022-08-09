@@ -6,13 +6,22 @@ html{
     height: 100%;
     background-size:cover;
     background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.engulfing-container{
+  height: 100vh;
+  width: 100vw - 240px;
+  margin-left: 240px;
 }
 
 .body-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-top: 200px;
+    margin-top: 70px;
   }
   
   .input-form {
@@ -73,10 +82,17 @@ html{
     text-align: center;
     display: center;
   }
+
+  .rates-container {
+    width: 100vw - 240px;
+  }
+
   .rates {
     color: white;
     text-align: center;
     display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
   }
   
   .title {
@@ -84,13 +100,15 @@ html{
     text-align: center;
     display: flex;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 3px;
   }
   
   .sub-title {
-    margin: 0px 30px;
+    margin: 10px 30px;
     color: white;
     text-align: center;
     display: flex;
+    max-width: 110px;
+    flex-direction: column;
   }
   

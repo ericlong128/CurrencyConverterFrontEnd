@@ -12,7 +12,7 @@ export class LoginService {
       "username" : username,
       "password" : password}, {
       withCredentials : true
-    };
+    });
   }
 
   checkSession() {
@@ -20,6 +20,13 @@ export class LoginService {
       withCredentials : true
     });
   }
+
+  logout() {
+    return this.httpCli.delete<any>(`localhost:4200/session`, {
+      withCredentials : true
+    });
+  }
+
 
 
 }

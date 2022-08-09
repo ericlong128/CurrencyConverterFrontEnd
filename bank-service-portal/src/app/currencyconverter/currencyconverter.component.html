@@ -1,5 +1,6 @@
+<app-sidebar></app-sidebar>
 <html>
-
+<div class="engulfing-container">
     <div class="container">
     <h2 class="title">Currency Converter</h2>
   
@@ -7,15 +8,17 @@
   <div class="ratestitle">
     <h3 class="header">Current Conversion Rates for 1 USD: </h3>
   </div>
-  <div class="rates">
-    <h3 class="sub-title">Indian Rupee (INR) {{roundValue(firstRate)}}</h3>
-    <h3 class="sub-title">Euro (EUR) {{roundValue(secondRate)}}</h3>
-    <h3 class="sub-title">Japanese Yen (JPY) {{roundValue(thirdRate)}}</h3>
-    <h3 class="sub-title">Sterling (GBP) {{roundValue(fourthRate)}}</h3>
-    <h3 class="sub-title">Canadian Dollar (CAD) {{roundValue(fifthRate)}}</h3>
-    <h3 class="sub-title">Renminbi (CNY) {{roundValue(sixthRate)}}</h3>
-    <h3 class="sub-title">Australian Dollar(AUD) {{roundValue(seventhRate)}}</h3>
-    <h3 class="sub-title">Russian Ruble (RUB) {{roundValue(eighthRate)}}</h3>
+  <div class="rates-container">
+    <div class="rates">
+      <h3 class="sub-title">Indian Rupee (INR) <div class="rate-value">{{roundValue(firstRate)}}</div></h3>
+      <h3 class="sub-title">Euro (EUR) <div class="rate-value">{{roundValue(secondRate)}}</div></h3>
+      <h3 class="sub-title">Japanese Yen (JPY) <div class="rate-value">{{roundValue(thirdRate)}}</div></h3>
+      <h3 class="sub-title">Sterling (GBP) <div class="rate-value">{{roundValue(fourthRate)}}</div></h3>
+      <h3 class="sub-title">Canadian Dollar (CAD) <div class="rate-value">{{roundValue(fifthRate)}}</div></h3>
+      <h3 class="sub-title">Renminbi (CNY) <div class="rate-value">{{roundValue(sixthRate)}}</div></h3>
+      <h3 class="sub-title">Australian Dollar(AUD) <div class="rate-value">{{roundValue(seventhRate)}}</div></h3>
+      <h3 class="sub-title">Russian Ruble (RUB) <div class="rate-value">{{roundValue(eighthRate)}}</div></h3>
+    </div>
   </div>
   
   
@@ -64,5 +67,6 @@
       </select>
     </div>
   </div>
+</div>
 </html>
 

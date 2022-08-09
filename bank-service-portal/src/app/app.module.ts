@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { CurrencyconverterComponent } from './currencyconverter/currencyconverter.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CurrencyconverterComponent } from './currencyconverter/currencyconverte
     ProfileComponent,
     LoginComponent,
     CurrencyconverterComponent,
+    SidebarComponent,
   ],
   imports: [
     CommonModule,
