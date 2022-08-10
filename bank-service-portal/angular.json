@@ -90,6 +90,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-toastr/toas.css",
               "src/styles.css"
             ],
             "scripts": []

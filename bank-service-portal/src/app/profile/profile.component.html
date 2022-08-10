@@ -1,49 +1,98 @@
 <app-sidebar></app-sidebar>
 <html>
 <div class="engulfing-container">
+    <span *ngIf="showToast" class="float-right toast">{{message}}</span>
 <div id="container">
-    <button *ngIf="isEdittingMode==false" (click)="updateEdittingMode(true)">Edit</button>
-    <button *ngIf="isEdittingMode==true" (click)="updateEdittingMode(false)">Cancel</button>
-    <button *ngIf="isEdittingMode==true" (click)="save()">Save</button>
+    <div class="card-head"></div>
+    <div class="button-div">
+        <button class="float-left" *ngIf="isEdittingMode==false" (click)="updateEdittingMode(true)">Edit Profile Info</button>
+        <button class="float-left" *ngIf="isEdittingMode==true" (click)="updateEdittingMode(false)">Cancel</button>
+    </div>
     <table class="table table-condensed text-black form">
         <tr>
-            <th>Name:</th>
             <td>
+                <label>First Name:</label>
                 <div *ngIf="!isEdittingMode">
-                    {{customer.name}}
+                    {{customer.firstName}}
                 </div>
                 <div *ngIf="isEdittingMode">
-                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.name">
+                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.firstName">
                 </div>
             </td>
         </tr>
-    
+
         <tr>
-            <th>Email Id:</th>
             <td>
+                <label>Last Name:</label>
                 <div *ngIf="!isEdittingMode">
-                    {{customer.emailId}}
+                    {{customer.lastName}}
                 </div>
                 <div *ngIf="isEdittingMode">
-                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.emailId">
+                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.lastName">
                 </div>
             </td>
-    
+        </tr>
+
+        <tr>
+            <td>
+                <label>Username:</label>
+                <div *ngIf="!isEdittingMode">
+                    {{customer.username}}
+                </div>
+                <div *ngIf="isEdittingMode">
+                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.username">
+                </div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <label>Email:</label>
+                <div *ngIf="!isEdittingMode">
+                    {{customer.email}}
+                </div>
+                <div *ngIf="isEdittingMode">
+                    <input type="text" id="emailField" name="emailField" class="form-control" email 
+                        required #emailField="ngModel" [(ngModel)]="customerToUpdate.email">
+                        <div class="field-error-message" *ngIf="emailField.invalid && emailField.dirty">
+                            Email is mandatory and should have the right format
+                        </div>
+                </div>
+            </td>
         </tr>
         <tr>
-            <th>Phone Number:</th>
             <td>
+                <label>Phone Number:</label>
                 <div *ngIf="!isEdittingMode">
                     {{customer.phoneNumber}}
                 </div>
                 <div *ngIf="isEdittingMode">
-                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.phoneNumber">
+                    <input type="number" name="phoneNumber" class="form-control" id="phoneNumber" pattern="[0-9]{10}" [(ngModel)]="customerToUpdate.phoneNumber"
+                        required #phoneNumber="ngModel">
+                    <div class="field-error-message" *ngIf="phoneNumber.invalid && phoneNumber.dirty">
+                        Phone number is mandatory and should be 10 digits
+                    </div>
                 </div>
             </td>
         </tr>
-    
-    
+        
+        <tr>
+            <td>
+                <label>Default currency:</label>
+                <div *ngIf="!isEdittingMode">
+                    {{customer.defaultCurrency}}
+                </div>
+                <div *ngIf="isEdittingMode">
+                    <select [(ngModel)]="customerToUpdate.defaultCurrency">
+                        <option *ngFor="let currency of availableCurrencies" [value]="currency">{{currency}}</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
     </table>
+    <div *ngIf="isEdittingMode==true">
+        <button (click)="save()">Save Profile</button>
+    </div>
 </div>
 </div>
 </html>

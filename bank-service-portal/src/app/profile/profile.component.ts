@@ -1,5 +1,6 @@
 import { Component, isDevMode, OnInit } from '@angular/core';
 import { Customer } from 'src/shared/models/customer';
+import { AvailableCurrencies } from 'src/shared/states/currencies';
 
 @Component({
   selector: 'app-profile',
@@ -11,17 +12,22 @@ export class ProfileComponent implements OnInit {
   customerToUpdate: Customer;
   updating: string;
   isEdittingMode: boolean = false;
-  constructor() { }
+  showToast: boolean = false;
+  message: string = "Saved successfully!!";
+  availableCurrencies: string[];
 
   ngOnInit(): void {
     this.customer = {
-      emailId: "a@gmail.com",
-      name: "john",
-      newPassword: "abc",
-      password: "abc",
-      phoneNumber: "1912901",
+      username: "johnsmith",
+      firstName: "John",
+      lastName: "Smith",
+      email: "johnsmith@infosys.com",
+      phoneNumber: "1234567890",
+      defaultCurrency: "INR",
     }
     this.customerToUpdate = Object.assign({}, this.customer);
+    this.availableCurrencies = AvailableCurrencies;
+    console.log(this.availableCurrencies);
   }
 
   updateEdittingMode(isEdittingMode: boolean) {
@@ -32,7 +38,10 @@ export class ProfileComponent implements OnInit {
   }
 
   save() {
+    console.log("saved",this.customerToUpdate);
     this.customer = Object.assign({}, this.customerToUpdate);
     this.isEdittingMode = false;
+    this.showToast = true;
+    setTimeout(() => {this.showToast = false}, 1500);
   }
 }
