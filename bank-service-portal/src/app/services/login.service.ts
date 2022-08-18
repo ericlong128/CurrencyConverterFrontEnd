@@ -16,11 +16,9 @@ export class LoginService {
 
 
   login(username : string, password : string) {
-    return this.httpCli.post<any>(`localhost:4200/api/customers`, {
-      "username" : username,
-      "password" : password}, {
-      withCredentials : true
-    });
+    return this.httpCli.post<any>(`http://localhost:8100/api/auth/signin`, {
+      "usernameOrEmail" : username,
+      "password" : password});
   }
 
   checkSession() {
