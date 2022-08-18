@@ -4,8 +4,8 @@
             <div class="login-form">
                 <form class="login-box">
                     <div class="login-title">Bank Service Portal</div>
-                    <input class="input-box" type="username" placeholder="Username" required>
-                    <input class="input-box" type="password" placeholder="Password" required>
+                    <input class="input-box form-control" name="username" type="username" placeholder="Username" [(ngModel)]="username" required>
+                    <input class="input-box form-control" name="password" type="password" placeholder="Password" [(ngModel)]="password" required>
                     <div class="forgot-password">Forgot Password?</div>
                     <button class="login-button" (click)="home()">Login</button>
                 </form>

@@ -9,15 +9,19 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  
+  username: string;
+  password: string;
+
   constructor(private router : Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.username = "";
+    this.password = "";
   }
 
   home(){
     // Need to get the email and password from the form here
-    this.loginService.login("johnsmith@infosys.com", "abc").subscribe((response: any) => {
+    this.loginService.login(this.username, this.password).subscribe((response: any) => {
       this.router.navigate(['/home']);
       sessionStorage.setItem("loggedIn", String(true));
     }
