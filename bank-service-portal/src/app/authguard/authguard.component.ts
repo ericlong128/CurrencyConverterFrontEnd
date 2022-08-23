@@ -11,7 +11,7 @@ export class AuthguardComponent implements CanActivate {
   constructor(private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (localStorage.getItem("isLoggedIn") == 'true') {
+    if (sessionStorage.getItem("loggedIn") == 'true') {
         return true;
     }else {
         this.router.navigate(["/login"]);

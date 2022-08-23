@@ -5,6 +5,7 @@ export class RequestRegistration {
     private phoneNumber : string;
     private password : string;
     private email : string;
+    private role: string;
 
     public setUsername(username: string){
         this.username = username;
@@ -52,5 +53,13 @@ export class RequestRegistration {
 
     public getEmail() : string {
         return this.email;
+    }
+
+    public setRole(role: string) {
+        this.role = role;
+    }
+
+    public getRole() : string {
+        return this.role;
     }
 }

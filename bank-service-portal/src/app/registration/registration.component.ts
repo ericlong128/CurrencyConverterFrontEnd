@@ -19,6 +19,7 @@ export class RegistrationComponent implements OnInit {
   email: string;
   phoneNumber: string;
   password: string;
+  role: string;
   
   private registrationData : RequestRegistration;
   constructor(public registrationClient: LoginService) { }
@@ -36,6 +37,7 @@ export class RegistrationComponent implements OnInit {
       this.registrationData.setPhoneNumber(this.phoneNumber);
       this.registrationData.setEmail(this.email);
       this.registrationData.setPassword(this.password);
+      this.registrationData.setRole(this.role);
 
       this.registrationClient.register(this.registrationData).subscribe((data) => {
           console.log("RESPONSE DATA "+JSON.stringify(data))

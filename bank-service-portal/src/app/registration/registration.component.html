@@ -34,6 +34,13 @@
                     <div>Please enter a password:</div>
                     <input type="password" formControlName="password" placeholder="Password" class="registration-input" id="password" [(ngModel)]="password" required>
                 </div>
+                <div class="form-group">
+                    <div>Please select account role:</div>
+                    <select type="role" formControlName="role" class="registration-input" id="role" [(ngModel)]="role">
+                        <option>ROLE_ADMIN</option>
+                        <option selected>ROLE_USER</option>
+                    </select>
+                </div>
                 <button type="button" [disabled]="buttonRegister==false" (click)="register()" class="register-button">Register</button>
             </div>
             <div class="col-md-6">
