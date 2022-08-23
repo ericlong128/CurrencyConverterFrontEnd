@@ -10,6 +10,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { CurrencyconverterComponent } from './currencyconverter/currencyconverter.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { AuthguardComponent } from './authguard/authguard.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     LoginComponent,
     CurrencyconverterComponent,
     SidebarComponent,
+    RegistrationComponent,
+    AuthguardComponent,
   ],
   imports: [
     CommonModule,

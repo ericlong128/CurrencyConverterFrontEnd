@@ -22,7 +22,7 @@ export class CurrencyconverterComponent implements OnInit {
   currentDate: Date = new Date;
 
   firstCurrency: string = 'USD';
-  secondCurrency: string = 'EUR';
+  secondCurrency: string = 'INR';
   currentRate!: number;
   firstInputValue: any;
   secondInputValue: any;

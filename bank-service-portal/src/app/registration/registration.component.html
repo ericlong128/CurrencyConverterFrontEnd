@@ -1,0 +1,47 @@
+<div class="registration-container">
+    <div class="registration-background">
+    <div class="row">
+        <div class="col-md-2">
+            <h3>Registration</h3>
+        </div>
+        
+    <form [formGroup]="registrationForm" class="registration-form-container">
+        <div class="registration-title">Register New User</div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div>Please enter a username:</div>
+                    <input type="text" formControlName="username" placeholder="Username" class="registration-input" id="username" [(ngModel)]="username" required>
+                </div>
+                <div class="form-group">
+                    <div>Please enter a name:</div>
+                    <input type="text" placeholder="Name" class="registration-input" id="name" formControlName="name" [(ngModel)]="name" required>
+                </div>
+                <div class="form-group">
+                    <div>Please enter your age:</div>
+                    <input type="number" placeholder="Age" class="registration-input" id="age" formControlName="age" [(ngModel)]="age" required>
+                </div>
+                <div class="form-group">
+                    <div>Please enter a phone number:</div>
+                    <input type="text" formControlName="phoneNumber" placeholder="Phone Number" class="registration-input" id="phoneNumber" [(ngModel)]="phoneNumber" required>
+                </div>
+            
+                <div class="form-group">
+                    <div>Please enter a valid email address:</div>
+                    <input type="email" formControlName="email" placeholder="Email" class="registration-input" id="email" [(ngModel)]="email" required>
+                </div>
+                <div class="form-group">
+                    <div>Please enter a password:</div>
+                    <input type="password" formControlName="password" placeholder="Password" class="registration-input" id="password" [(ngModel)]="password" required>
+                </div>
+                <button type="button" [disabled]="buttonRegister==false" (click)="register()" class="register-button">Register</button>
+            </div>
+            <div class="col-md-6">
+                <div *ngIf="visible==true">
+                    <app-login></app-login>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>

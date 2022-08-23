@@ -1,7 +1,17 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
 import { Router } from '@angular/router';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable, retry, catchError, throwError } from 'rxjs';
+import { RequestRegistration } from 'app/models/RequestRegistration';
+
+const httpOptions = {
+  headers: new HttpHeaders(
+    {
+      'Content-Type' : 'application/json'
+    }
+  )
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +23,7 @@ export class LoginService {
   user : User = <User>{};
   username : string = "";
   password: string = "";
+  registrationUrl = "http://localhost:8100/api/auth/signup"  
 
 
   login(username : string, password : string) {
@@ -33,6 +44,22 @@ export class LoginService {
     });
   }
 
+    register(requestRegistrationDTO: RequestRegistration): Observable<any> {      
+      return this.httpCli.post<any>(
+        this.registrationUrl, 
+        requestRegistrationDTO, 
+        httpOptions
+        ).pipe(
+            retry(1),
+            catchError(this.handleError)
+        )          
+    }
+  
+    handleError(error: { status: any; error: { error: any; message: any; }; }) {    
+      let errorMessage = `Error Code: ${error.status} - ${error.error.error} \nMessage: ${error.error.message}`;
+      window.alert(errorMessage);
+      return throwError(errorMessage);
+    }
+  }
 
 
-}
