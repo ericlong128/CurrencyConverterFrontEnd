@@ -1,3 +1,4 @@
+<ng-container  *ngIf="loggedIn">
 <div class="navbar-container">
   <div class="navbar-logo" (click)="home()"></div>
   <div class="navbar-menus">
@@ -8,6 +9,7 @@
     <button *ngIf="loggedIn" class="navbar-option" (click)="profile()">Profile</button>
   </div>
 </div>
+</ng-container>
 
 
 
