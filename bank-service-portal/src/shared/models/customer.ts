@@ -5,13 +5,12 @@ export class Customer {
     // private String password;
     // private String phoneNumber;
     // private List<Address> addresses;
+    id: string;
     username: string;
-    firstName: string;
-    lastName: string;
+    name: string;
     email: string;
+    location: string;
     password?: string;
-    newPassword?: string;
     phoneNumber: string;
-    defaultCurrency: string;
     //check for customer carts
 }

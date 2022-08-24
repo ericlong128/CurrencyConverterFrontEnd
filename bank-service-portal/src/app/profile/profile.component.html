@@ -1,4 +1,4 @@
-<!-- <app-sidebar></app-sidebar>
+<app-sidebar></app-sidebar>
 <html>
 <div class="engulfing-container">
     <span *ngIf="showToast" class="float-right toast">{{message}}</span>
@@ -11,24 +11,12 @@
     <table class="table table-condensed text-black form">
         <tr>
             <td>
-                <label>First Name:</label>
+                <label>Name:</label>
                 <div *ngIf="!isEdittingMode">
-                    {{customer.firstName}}
+                    {{customer.name}}
                 </div>
                 <div *ngIf="isEdittingMode">
-                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.firstName">
-                </div>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <label>Last Name:</label>
-                <div *ngIf="!isEdittingMode">
-                    {{customer.lastName}}
-                </div>
-                <div *ngIf="isEdittingMode">
-                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.lastName">
+                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.name">
                 </div>
             </td>
         </tr>
@@ -75,17 +63,15 @@
                 </div>
             </td>
         </tr>
-        
+
         <tr>
             <td>
-                <label>Default currency:</label>
+                <label>Location:</label>
                 <div *ngIf="!isEdittingMode">
-                    {{customer.defaultCurrency}}
+                    {{customer.location}}
                 </div>
                 <div *ngIf="isEdittingMode">
-                    <select [(ngModel)]="customerToUpdate.defaultCurrency">
-                        <option *ngFor="let currency of availableCurrencies" [value]="currency">{{currency}}</option>
-                    </select>
+                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.location">
                 </div>
             </td>
         </tr>
@@ -95,5 +81,4 @@
     </div>
 </div>
 </div>
-</html> -->
-Profile
+</html>
