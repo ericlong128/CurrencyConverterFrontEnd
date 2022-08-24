@@ -15,6 +15,7 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     this.router.navigate(['']);
+    sessionStorage.setItem('loggedIn', String(false));
   }
 
   profile() {

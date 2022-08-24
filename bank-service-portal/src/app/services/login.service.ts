@@ -3,7 +3,6 @@ import { User } from '../models/User';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, retry, catchError, throwError } from 'rxjs';
-import { RequestRegistration } from 'app/models/RequestRegistration';
 
 const httpOptions = {
   headers: new HttpHeaders(
@@ -22,8 +21,7 @@ export class LoginService {
 
   user : User = <User>{};
   username : string = "";
-  password: string = "";
-  registrationUrl = "http://localhost:8100/api/auth/signup"  
+  password: string = "";  
 
 
   login(username : string, password : string) {
@@ -44,15 +42,16 @@ export class LoginService {
     });
   }
 
-    register(requestRegistrationDTO: RequestRegistration): Observable<any> {      
-      return this.httpCli.post<any>(
-        this.registrationUrl, 
-        requestRegistrationDTO, 
-        httpOptions
-        ).pipe(
-            retry(1),
-            catchError(this.handleError)
-        )          
+    register(user: User): Observable<User> {      
+      return this.httpCli.post<User>('http://localhost:8100/api/auth/signup', user);
+
+        // this.user, 
+        // requestRegistrationDTO, 
+        // httpOptions
+        // ).pipe(
+        //     retry(1),
+        //     catchError(this.handleError)
+        // )          
     }
   
     handleError(error: { status: any; error: { error: any; message: any; }; }) {    

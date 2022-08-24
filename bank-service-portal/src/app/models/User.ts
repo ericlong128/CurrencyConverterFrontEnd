@@ -4,9 +4,11 @@ export interface User{
 
     username : string;
     password : string;
-    firstName : string;
-    lastName : string;
+    name : string;
     emailId : string;
-    dateOfBirth : Date;
-    address : Address;
+    phoneNumber : number;
+    age : number;
+    role: string;
+    // dateOfBirth : Date;
+    // address : Address;
 }
