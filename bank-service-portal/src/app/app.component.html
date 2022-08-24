@@ -2,11 +2,10 @@
 <div class="navbar-container">
   <div class="navbar-logo" (click)="home()"></div>
   <div class="navbar-menus">
+    <button class="navbar-option" [routerLink]="['/allUsers']" *ngIf="isAdmin">All Users</button>
     <button class="navbar-option" (click)="home()">Home</button>
-    <button class="navbar-option" (click)="profile()">About Us</button>
+    <button class="navbar-option" (click)="profile()">Profile</button>
     <button class="navbar-option" (click)="profile()">Careers</button>
-    <button class="navbar-option" (click)="profile()">Support</button>
-    <button *ngIf="loggedIn" class="navbar-option" (click)="profile()">Profile</button>
   </div>
 </div>
 </ng-container>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AllUsersComponent } from './all-users/all-users.component';
 import { AppComponent } from './app.component';
 import { AuthguardComponent } from './authguard/authguard.component';
 import { CurrencyconverterComponent } from './currencyconverter/currencyconverter.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'home', component: CurrencyconverterComponent, canActivate: [AuthguardComponent]},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthguardComponent]},
+  {path: 'allUsers', component: AllUsersComponent, canActivate: [AuthguardComponent]},
   {path: 'registration', component: RegistrationComponent}
 ];
 

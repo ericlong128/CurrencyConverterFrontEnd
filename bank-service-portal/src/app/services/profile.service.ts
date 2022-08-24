@@ -1,6 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Customer } from 'src/shared/models/customer';
+import { User } from 'app/models/User';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,27 @@ export class ProfileService {
     const URL: string = 'placeholderurl';
     const params = new HttpParams()
       .set('username', username);
-    return this.http.get<Customer>(URL + '/getProfile?', {params});
+    return this.http.get<User>(URL + '/getProfile?', {params});
   }
 
-  updateProfile(customer: Customer) {
+  updateProfile(customer: User) {
     const URL: string = 'placeholderurl';
 
-    return this.http.post<Customer>(URL + '/update', customer);
+    return this.http.post<User>(URL + '/update', customer);
+  }
+
+  getUsers(): Observable<User[]> {
+    const userUrl = 'http://localhost:8100/api/customers';
+    return this.http.get<User[]>(userUrl).pipe(catchError(this.handleError));
+  }
+
+  private handleError(httpError: HttpErrorResponse) {
+    if (httpError.error instanceof ErrorEvent) {
+      console.log('An error has occured: ', httpError.error.message);
+    } else {
+      console.error(`Backend return code ${httpError.status} body was: ${httpError.error}`)
+    }
+
+    return throwError(() => new Error('Unrecognized Error, try again'));
   }
 }

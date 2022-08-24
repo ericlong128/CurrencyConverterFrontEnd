@@ -12,6 +12,7 @@ import { CurrencyconverterComponent } from './currencyconverter/currencyconverte
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthguardComponent } from './authguard/authguard.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AuthguardComponent } from './authguard/authguard.component';
     SidebarComponent,
     RegistrationComponent,
     AuthguardComponent,
+    AllUsersComponent,
   ],
   imports: [
     CommonModule,
