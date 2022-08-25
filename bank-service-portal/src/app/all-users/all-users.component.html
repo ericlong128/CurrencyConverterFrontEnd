@@ -1,0 +1,23 @@
+<div class="all-users-container">
+    <div>
+        <h2 class="title">Listing All Users:</h2>
+    </div>
+    <div class="all-users-body">
+
+        <ul class="list-group" *ngFor="let u of users">
+
+            <li class="list-group-item">Id: {{u.id}}</li>
+            <li class="list-group-item">Username: {{u.username}}</li>
+            <li class="list-group-item">Email: {{u.email}}</li>
+            <li class="list-group-item">Name: {{u.name}}</li>
+            <li class="list-group-item">Age: {{u.age}}</li>
+            <li class="list-group-item">Role: {{u.role[0].name}}</li>
+            <li class="list-group-item">Phone Number: {{u.phoneNumber}}</li>
+            
+        </ul>
+
+
+    </div>
+
+
+</div>>
