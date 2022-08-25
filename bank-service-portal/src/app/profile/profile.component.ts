@@ -1,6 +1,7 @@
 import { Component, isDevMode, OnInit } from '@angular/core';
-// import { Customer } from 'src/shared/models/customer';
-// import { AvailableCurrencies } from 'src/shared/states/currencies';
+import { Customer } from 'shared/models/customer';
+import { AvailableCurrencies } from 'shared/states/currencies';
+import { ProfileService } from '../services/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,41 +9,53 @@ import { Component, isDevMode, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  // customer: Customer;
-  // customerToUpdate: Customer;
+  customer: Customer;
+  customerToUpdate: Customer;
   updating: string;
   isEdittingMode: boolean = false;
   showToast: boolean = false;
   message: string = "Saved successfully!!";
   availableCurrencies: string[];
 
+  constructor(private profileService: ProfileService) { }
+
   ngOnInit(): void {
-  //   this.customer = {
-  //     username: "johnsmith",
-  //     firstName: "John",
-  //     lastName: "Smith",
-  //     email: "johnsmith@infosys.com",
-  //     phoneNumber: "1234567890",
-  //     defaultCurrency: "INR",
-  //   }
-  //   this.customerToUpdate = Object.assign({}, this.customer);
-  //   this.availableCurrencies = AvailableCurrencies;
-  //   console.log(this.availableCurrencies);
-  // }
+    this.customer = {
+      email: "",
+      name: "",
+      location: "",
+      id: "1",
+      phoneNumber: "",
+      username: "",
+    }
+    this.profileService.getProfile("1").subscribe(resp => {
+      console.log(resp);
+      this.customer = resp;
+      this.customerToUpdate = Object.assign({}, this.customer);
+    },
+    err => {
+      alert("Ran into an issue while trying to load profile");
+    });
+    
+    this.availableCurrencies = AvailableCurrencies;
+  }
 
-  // updateEdittingMode(isEdittingMode: boolean) {
-  //   this.isEdittingMode = isEdittingMode;
-  //   if (!isEdittingMode) {
-  //     this.customerToUpdate = Object.assign({}, this.customer);
-  //   }
-  // }
+  updateEdittingMode(isEdittingMode: boolean) {
+    this.isEdittingMode = isEdittingMode;
+    if (!isEdittingMode) {
+      this.customerToUpdate = Object.assign({}, this.customer);
+    }
+  }
 
-  // save() {
-  //   console.log("saved",this.customerToUpdate);
-  //   this.customer = Object.assign({}, this.customerToUpdate);
-  //   this.isEdittingMode = false;
-  //   this.showToast = true;
-  //   setTimeout(() => {this.showToast = false}, 1500);
-  // }
-}
+  save() {
+    this.profileService.updateProfile(this.customerToUpdate).subscribe(resp => {
+      this.customer = resp;
+      this.customerToUpdate = Object.assign({}, this.customer);
+      this.isEdittingMode = false;
+      this.showToast = true;
+    },
+    err => {
+      alert("Ran into an issue while trying to update profile");
+    });
+  }
 }
