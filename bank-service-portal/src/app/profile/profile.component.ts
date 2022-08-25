@@ -1,5 +1,5 @@
 import { Component, isDevMode, OnInit } from '@angular/core';
-import { Customer } from 'shared/models/customer';
+import { User } from 'app/models/User';
 import { AvailableCurrencies } from 'shared/states/currencies';
 import { ProfileService } from '../services/profile.service';
 
@@ -8,9 +8,10 @@ import { ProfileService } from '../services/profile.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+
 export class ProfileComponent implements OnInit {
-  customer: Customer;
-  customerToUpdate: Customer;
+  customer: User;
+  customerToUpdate: User;
   updating: string;
   isEdittingMode: boolean = false;
   showToast: boolean = false;
@@ -20,15 +21,15 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    this.customer = {
-      email: "",
-      name: "",
-      location: "",
-      id: "1",
-      phoneNumber: "",
-      username: "",
-    }
-    this.profileService.getProfile("1").subscribe(resp => {
+    // this.customer = {
+    //   email: "",
+    //   name: "",
+    //   // location: "",
+    //   id: 1,
+    //   phoneNumber: "",
+    //   username: "",
+    // }
+    this.profileService.getProfile(1).subscribe(resp => {
       console.log(resp);
       this.customer = resp;
       this.customerToUpdate = Object.assign({}, this.customer);

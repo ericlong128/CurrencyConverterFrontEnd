@@ -7,7 +7,7 @@ export class User{
     password : string;
     name : string;
     email : string;
-    phoneNumber : number;
+    phoneNumber : string;
     age : number;
     role: Role[];
     // dateOfBirth : Date;
@@ -19,7 +19,7 @@ export class User{
         password : string,
         name : string,
         email : string,
-        phoneNumber : number,
+        phoneNumber : string,
         age : number,
         role: Role[]
     ) {

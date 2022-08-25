@@ -24,8 +24,8 @@ export class ProfileService {
     }
 
     return throwError(() => new Error('Unrecognized Error, try again'));
-
-  getProfile(id: string) {
+  }
+  getProfile(id: number) {
     const URL: string = 'http://localhost:8100/api/customers/'+id;
     return this.http.get<User>(URL);
   }
