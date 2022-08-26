@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'app/app.component';
 import { LoginService } from '../services/login.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private router : Router, private loginService: LoginService, private app : AppComponent) { }
+  constructor(private router : Router, private loginService: LoginService, private app : AppComponent, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.username = "";
@@ -27,14 +28,19 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("loggedIn", String(true));
       this.app.loggedIn = true;
       this.app.updateUserData(data);
-      console.log(data);
-      console.log(this.app.currentUser);
-      console.log(this.app.currentUserId);
-      console.log(this.app.isAdmin);
+      this.loginSuccessToaster();
     }
     , (errResponse: any) => {
-      alert(errResponse.error.error);
+      this.loginErrorToaster();
     });
+  }
+
+  loginSuccessToaster(){
+    this.toastr.success(`Successfully logged in as ${this.username}`)
+  }
+
+  loginErrorToaster(){
+    this.toastr.error(`Could not find matching password/username for user: ${this.username}`)
   }
 
   

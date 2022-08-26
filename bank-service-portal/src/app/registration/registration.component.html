@@ -55,9 +55,9 @@
 <div class="registration-container">
     <div class="registration-background">
         <div class="row">
-            <div class="col-md-2">
+            <!-- <div class="col-md-2">
                 <h3>Registration</h3>
-            </div>
+            </div> -->
             <div class="registration-form-container">
                 <form [formGroup]="registrationForm" (ngSubmit)="register()">
                     <div class="registration-title">Register New User</div>
@@ -72,7 +72,7 @@
                             <div class="form-inline">
                                 <div class="form-group registration-input">
                                     <label for="username">Username:</label>
-                                    <input type="text" formControlName="username" class="form-control" />
+                                    <input type="text" formControlName="username" class="form-control" [(ngModel)]="username" />
                                 </div>
                             </div>
                             <div class="form-inline">
@@ -103,7 +103,7 @@
                                 <div>Please select account role:</div>
                                 <select formControlName="role" class="form-control">
                                     <option>ROLE_ADMIN</option>
-                                    <option [defaultSelected]="'ROLE_USER'">ROLE_USER</option>
+                                    <option>ROLE_USER</option>
                                 </select>
                             </div>
                             <button type="button" [disabled]="buttonRegister==false" (click)="register()"
