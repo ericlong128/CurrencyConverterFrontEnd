@@ -9,6 +9,7 @@ html{
     position: absolute;
     top: 0;
     left: 0;
+    overflow-y: hidden;
 }
 
 .engulfing-container{
@@ -23,15 +24,16 @@ html{
     flex-direction: column;
     margin-top: 70px;
   }
+
   
   .input-form {
-    
     align-self: center;
     margin-bottom: 40px;
   }
   
   .input-field {
-    border-top: solid 32px rgb(255, 153, 0);
+    border-top: solid 24px rgb(255, 153, 0);
+    border-radius: 12px;
     width: 500px;
     height: 50px;
     padding: 0px 10px;
@@ -39,7 +41,7 @@ html{
     font-weight: 700;
     color: #3b3939;
     background-color: white;
-    box-shadow: 2px 2px 15px black;
+    box-shadow: 0px 2px 4px rgba(0,0,0,.5);
     outline: none;
   }
   
@@ -58,7 +60,7 @@ html{
     height: 50px;
     width: 70px;
     color: rgb(255, 153, 0);
-    box-shadow: 1px 1px 5px #000;
+    box-shadow: 0px 2px 4px rgba(0,0,0,.5);
     font-size: 18px;
     border-radius: 10px;
   
@@ -85,10 +87,22 @@ html{
 
   .rates-container {
     width: 100vw - 240px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .rates-box {
+    background-color: white;
+    width: 55%;
+    border-top: solid 24px rgb(255, 153, 0);
+    border-radius: 12px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,.5);
   }
 
   .rates {
-    color: white;
+    color: gray;
     text-align: center;
     display: flex;
     justify-content: space-evenly;
@@ -104,11 +118,31 @@ html{
   }
   
   .sub-title {
-    margin: 10px 30px;
-    color: white;
+    margin: 15px 30px;
+    border-radius: 8px;
+    color: gray;
     text-align: center;
     display: flex;
-    max-width: 110px;
+    max-width: 130px;
     flex-direction: column;
+    -moz-box-shadow: 0px 2px 4px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0px 2px 4px rgba(0,0,0,.5);
+    box-shadow: 0px 2px 4px rgba(0,0,0,.5);
+    width: 130px;
   }
   
+.footer-container{
+  position: absolute;
+  bottom: 0px;
+  left: 240px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), black);
+  width: calc(100% - 240px);
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-text{
+  color: white;
+}

@@ -78,3 +78,18 @@ button:hover {
     background-color: #fcc97e;
 }
 
+.footer-container{
+    position: absolute;
+    bottom: 0px;
+    left: 240px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), black);
+    width: calc(100% - 240px);
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer-text{
+    color: white;
+  }
