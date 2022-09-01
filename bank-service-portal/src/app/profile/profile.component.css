@@ -47,15 +47,6 @@ label {
     font-size: small;
 }
 
-.toast {
-    background: rgba(60, 255, 0, 0.454);
-    margin: 10px;
-    border-radius: 2px;
-    padding: 5px 10px;
-    color: white;
-    position: fixed;
-}
-
 .card-head {
     background-color: #ff9900;
     height: 30px;

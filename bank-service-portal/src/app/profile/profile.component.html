@@ -13,10 +13,10 @@
             <td>
                 <label>Name:</label>
                 <div *ngIf="!isEdittingMode">
-                    {{customer.name}}
+                    {{user.name}}
                 </div>
                 <div *ngIf="isEdittingMode">
-                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.name">
+                    <input type="text" class="form-control" [(ngModel)]="userToUpdate.name">
                 </div>
             </td>
         </tr>
@@ -25,10 +25,10 @@
             <td>
                 <label>Username:</label>
                 <div *ngIf="!isEdittingMode">
-                    {{customer.username}}
+                    {{user.username}}
                 </div>
                 <div *ngIf="isEdittingMode">
-                    <input type="text" class="form-control" [(ngModel)]="customerToUpdate.username">
+                    <input type="text" class="form-control" [(ngModel)]="userToUpdate.username">
                 </div>
             </td>
         </tr>
@@ -37,11 +37,11 @@
             <td>
                 <label>Email:</label>
                 <div *ngIf="!isEdittingMode">
-                    {{customer.email}}
+                    {{user.email}}
                 </div>
                 <div *ngIf="isEdittingMode">
                     <input type="text" id="emailField" name="emailField" class="form-control" email 
-                        required #emailField="ngModel" [(ngModel)]="customerToUpdate.email">
+                        required #emailField="ngModel" [(ngModel)]="userToUpdate.email">
                         <div class="field-error-message" *ngIf="emailField.invalid && emailField.dirty">
                             Email is mandatory and should have the right format
                         </div>
@@ -52,10 +52,10 @@
             <td>
                 <label>Phone Number:</label>
                 <div *ngIf="!isEdittingMode">
-                    {{customer.phoneNumber}}
+                    {{user.phoneNumber}}
                 </div>
                 <div *ngIf="isEdittingMode">
-                    <input type="number" name="phoneNumber" class="form-control" id="phoneNumber" pattern="[0-9]{10}" [(ngModel)]="customerToUpdate.phoneNumber"
+                    <input type="number" name="phoneNumber" class="form-control" id="phoneNumber" pattern="[0-9]{10}" [(ngModel)]="userToUpdate.phoneNumber"
                         required #phoneNumber="ngModel">
                     <div class="field-error-message" *ngIf="phoneNumber.invalid && phoneNumber.dirty">
                         Phone number is mandatory and should be 10 digits

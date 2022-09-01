@@ -1,5 +1,7 @@
 import { Component, isDevMode, OnInit } from '@angular/core';
+import { AppComponent } from 'app/app.component';
 import { User } from 'app/models/User';
+import { ToastrService } from 'ngx-toastr';
 import { AvailableCurrencies } from 'shared/states/currencies';
 import { ProfileService } from '../services/profile.service';
 
@@ -10,33 +12,30 @@ import { ProfileService } from '../services/profile.service';
 })
 
 export class ProfileComponent implements OnInit {
-  customer: User;
-  customerToUpdate: User;
+  user: User;
+  userToUpdate: User;
   updating: string;
   isEdittingMode: boolean = false;
   showToast: boolean = false;
   message: string = "Saved successfully!!";
   availableCurrencies: string[];
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService,  private app : AppComponent, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    // this.customer = {
-    //   email: "",
-    //   name: "",
-    //   // location: "",
-    //   id: 1,
-    //   phoneNumber: "",
-    //   username: "",
-    // }
-    this.profileService.getProfile(1).subscribe(resp => {
-      console.log(resp);
-      this.customer = resp;
-      this.customerToUpdate = Object.assign({}, this.customer);
-    },
-    err => {
-      alert("Ran into an issue while trying to load profile");
-    });
+    if (this.app.currentUser) {
+      this.user = this.app.currentUser;
+      this.profileService.getProfile(this.user.id).subscribe(resp => {
+        this.user = resp;
+        this.userToUpdate = Object.assign({}, this.user);
+      },
+      err => {
+        this.loadErrorToaster();
+      });
+    }
+    else {
+      this.loginErrorToaster();
+    }
     
     this.availableCurrencies = AvailableCurrencies;
   }
@@ -44,19 +43,34 @@ export class ProfileComponent implements OnInit {
   updateEdittingMode(isEdittingMode: boolean) {
     this.isEdittingMode = isEdittingMode;
     if (!isEdittingMode) {
-      this.customerToUpdate = Object.assign({}, this.customer);
+      this.userToUpdate = Object.assign({}, this.user);
     }
   }
 
   save() {
-    this.profileService.updateProfile(this.customerToUpdate).subscribe(resp => {
-      this.customer = resp;
-      this.customerToUpdate = Object.assign({}, this.customer);
+    this.profileService.updateProfile(this.userToUpdate).subscribe(resp => {
+      this.user = resp;
+      this.userToUpdate = Object.assign({}, this.user);
       this.isEdittingMode = false;
-      this.showToast = true;
+      this.updateSuccessToaster();
     },
     err => {
-      alert("Ran into an issue while trying to update profile");
+      this.updateErrorToaster();
     });
+  }
+  updateSuccessToaster(){
+    this.toastr.success(`Profile updated successfully!`);
+  }
+
+  updateErrorToaster(){
+    this.toastr.error(`Ran into an issue updating profile`);
+  }
+
+  loadErrorToaster(){
+    this.toastr.error(`Ran into an issue while trying to load profile!`);
+  }
+
+  loginErrorToaster(){
+    this.toastr.error(`You are not logged in`);
   }
 }
