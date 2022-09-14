@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from 'app/app.component';
 import { LoginService } from '../services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { userIdKey } from 'shared/states/sessionStateProps';
 
 @Component({
   selector: 'app-login',
@@ -23,11 +24,12 @@ export class LoginComponent implements OnInit {
 
   login(){
     // Need to get the email and password from the form here
-    this.loginService.login(this.username, this.password).subscribe((data) => {
+    this.loginService.login(this.username, this.password).subscribe((user) => {
       this.router.navigate(['/home']);
       sessionStorage.setItem("loggedIn", String(true));
+      sessionStorage.setItem(userIdKey, String(user.id));
       this.app.loggedIn = true;
-      this.app.updateUserData(data);
+      this.app.updateUserData(user);
       this.loginSuccessToaster();
     }
     , (errResponse: any) => {

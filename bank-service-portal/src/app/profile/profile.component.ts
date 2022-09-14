@@ -1,8 +1,9 @@
 import { Component, isDevMode, OnInit } from '@angular/core';
 import { AppComponent } from 'app/app.component';
-import { User } from 'app/models/User';
+import { Role, User } from 'app/models/User';
 import { ToastrService } from 'ngx-toastr';
 import { AvailableCurrencies } from 'shared/states/currencies';
+import { userIdKey } from 'shared/states/sessionStateProps';
 import { ProfileService } from '../services/profile.service';
 
 @Component({
@@ -23,15 +24,19 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService: ProfileService,  private app : AppComponent, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    if (this.app.currentUser) {
-      this.user = this.app.currentUser;
-      this.profileService.getProfile(this.user.id).subscribe(resp => {
-        this.user = resp;
-        this.userToUpdate = Object.assign({}, this.user);
-      },
-      err => {
-        this.loadErrorToaster();
-      });
+    this.user = {
+      id:-1,
+      age:0,
+      email:"",
+      name:"",
+      password:"",
+      phoneNumber: "",
+      username:"",
+      role: []
+    }
+    let userLoginId:number = Number(sessionStorage.getItem(userIdKey));
+    if (userLoginId) {
+      this.loadProfile();
     }
     else {
       this.loginErrorToaster();
@@ -49,21 +54,36 @@ export class ProfileComponent implements OnInit {
 
   save() {
     this.profileService.updateProfile(this.userToUpdate).subscribe(resp => {
-      this.user = resp;
-      this.userToUpdate = Object.assign({}, this.user);
+      this.loadProfile();
       this.isEdittingMode = false;
       this.updateSuccessToaster();
     },
-    err => {
-      this.updateErrorToaster();
+    resp => {
+      this.updateErrorToaster(resp.error.message);
     });
   }
+
+  loadProfile(){
+    let userLoginId:number = Number(sessionStorage.getItem(userIdKey));
+
+    if (userLoginId) {
+      this.profileService.getProfile(userLoginId).subscribe(resp => {
+        resp.password = "";
+        this.user = resp;
+        this.userToUpdate = Object.assign({}, this.user);
+      },
+      err => {
+        this.loadErrorToaster();
+      });
+    }
+  }
+
   updateSuccessToaster(){
     this.toastr.success(`Profile updated successfully!`);
   }
 
-  updateErrorToaster(){
-    this.toastr.error(`Ran into an issue updating profile`);
+  updateErrorToaster(message: string){
+    this.toastr.error(message);
   }
 
   loadErrorToaster(){

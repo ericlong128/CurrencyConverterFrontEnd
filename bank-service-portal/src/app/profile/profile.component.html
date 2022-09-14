@@ -32,6 +32,18 @@
                 </div>
             </td>
         </tr>
+
+        <tr>
+            <td>
+                <label>Password:</label>
+                <div *ngIf="!isEdittingMode">
+                    ****
+                </div>
+                <div *ngIf="isEdittingMode">
+                    <input type="password" class="form-control" [(ngModel)]="userToUpdate.password">
+                </div>
+            </td>
+        </tr>
         
         <tr>
             <td>
